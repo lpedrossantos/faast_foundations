@@ -45,4 +45,4 @@ jobs:
         pytest
     - name: Test with pylint
       run: |
-        pylint
+        pylint $(git ls-files '*.py')
