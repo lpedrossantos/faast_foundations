@@ -32,6 +32,7 @@ jobs:
         python -m pip install pandas
         python -m pip install toml
         python -m pip install pytest_cov
+        python -m pip install -e 'life_expectancy'
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
