@@ -47,3 +47,7 @@ Open the `README.md` file inside each assignment and follow the instructions.
 > **Note**: Remember that all commands inside the Readme files assume you are in the root of the project.
 
 You can now start working on the [setup assignment](./assignment_0/README.md). Good luck! 🚀
+
+
+Status Workflow:
+[![Python package](https://github.com/lpedrossantos/faast_foundations/actions/workflows/python-package.yml/badge.svg)](https://github.com/lpedrossantos/faast_foundations/actions/workflows/python-package.yml)
