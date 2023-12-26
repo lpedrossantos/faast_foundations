@@ -1,18 +1,6 @@
 import argparse
-from pathlib import Path
 import pandas as pd
-
-
-def load_data() -> pd.DataFrame:
-    """
-    This function loads the data eu_life_expectancy
-    Returns:
-        df: eu_life_expectancy as Pandas dataframe 
-    """
-    path = Path.cwd() / './life_expectancy/data/eu_life_expectancy_raw.tsv'
-    df = pd.read_csv(path, sep= r'\,|\t', header=0, engine='python')
-    return df
-
+from life_expectancy.load_save_module import load_data, save_data
 
 def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
     """
@@ -39,21 +27,9 @@ def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
 
     df = df.dropna()
 
-    df_cleaned = df[df['region'] == region]
+    df_cleaned = df[df['region'] == region].reset_index(drop=True)
 
     return df_cleaned
-
-def save_data(df_cleaned: pd.DataFrame, region: str = 'PT') -> None:
-    """
-    This function saves the cleaned pandas 
-    dataframe filtered by the region
-    Args:
-        df_cleaned: eu_life_expectancy cleaned 
-        and filtered by region Pandas DataFrame
-        region: Type of Country to filter dataset
-    """
-    df_cleaned.to_csv(f'./life_expectancy/data/{region.lower()}_life_expectancy.csv', index=False)
-
 
 def main() -> None:
     """
@@ -74,5 +50,7 @@ def main() -> None:
 
     save_data(df_cleaned, args.region)
 
+    return df_cleaned
+
 if __name__ == "__main__": # pragma: no cover
-    main()
+   main()
