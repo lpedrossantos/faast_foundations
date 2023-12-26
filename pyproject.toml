@@ -16,6 +16,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["life_expectancy"]
 
+[project.scripts]
+life_expectancy = "life_expectancy.cleaning:main"
+
 [project.optional-dependencies]
 dev = ["pytest", "pylint", "pytest-cov", "toml"]
 
@@ -32,3 +35,4 @@ disable = [
    "missing-module-docstring",
    # Add any other checks you want to disable here
 ]
+
