@@ -9,12 +9,14 @@ from . import OUTPUT_DIR, FIXTURES_DIR
 
 @patch("life_expectancy.cleaning.pd.read_csv")
 def test_load_data(read_csv_mock: Mock):
-    read_csv_mock.return_value = pd.DataFrame()
+    read_csv_mock.side_effect = print("Load Data Successfully")
     result_df = load_data()
+
+    expected_df = pd.read_csv(FIXTURES_DIR / "eu_life_expectancy_expected.csv")
 
     read_csv_mock.assert_called_once()
 
-    pd.testing.assert_frame_equal(result_df, pd.read_csv(FIXTURES_DIR / "eu_life_expectancy_expected.csv"))
+    pd.testing.assert_frame_equal(result_df, expected_df)
 
 
 def test_clean_data(pt_life_expectancy_expected):
@@ -30,7 +32,7 @@ def test_clean_data(pt_life_expectancy_expected):
 
 @patch("life_expectancy.cleaning.pd.DataFrame.to_csv")
 def test_save_data(to_csv_mock: Mock):
-    to_csv_mock.return_value = pd.DataFrame()
+    to_csv_mock.return_value = print("CSV Saved Successfully")
     result_df = main()
     result_df.to_csv(
         OUTPUT_DIR / "pt_life_expectancy.csv"

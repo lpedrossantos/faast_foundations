@@ -1,6 +1,7 @@
 import argparse
 import pandas as pd
-from life_expectancy.load_save_module import load_data, save_data
+from life_expectancy.load_module import load_data
+from life_expectancy.save_module import save_module
 
 def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
     """
