@@ -1,7 +1,4 @@
-import argparse
 import pandas as pd
-from life_expectancy.load_module import load_data
-from life_expectancy.save_module import save_module
 
 def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
     """
@@ -31,27 +28,3 @@ def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
     df_cleaned = df[df['region'] == region].reset_index(drop=True)
 
     return df_cleaned
-
-def main() -> None:
-    """
-    This function executes the main steps of
-    the script:
-    1st: Defines the parser and region argument
-    2nd: Loads the data
-    3rd: Cleans the Data
-    4th: Saves the data
-    """
-    parser = argparse.ArgumentParser(description='filters data by region.')
-    parser.add_argument('--region', action='store', default='PT')
-    args, _ = parser.parse_known_args()
-    
-    df = load_data()
-
-    df_cleaned = clean_data(df, args.region)
-
-    save_data(df_cleaned, args.region)
-
-    return df_cleaned
-
-if __name__ == "__main__": # pragma: no cover
-   main()
