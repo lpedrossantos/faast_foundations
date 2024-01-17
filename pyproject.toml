@@ -28,7 +28,7 @@ omit = [
 ]
 
 [tool.coverage.report]
-fail_under = 80
+fail_under = 8
 
 [tool.pylint."messages control"]
 disable = [

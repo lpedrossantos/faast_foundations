@@ -4,6 +4,8 @@ from pathlib import Path
 def load_data(input_path: str) -> pd.DataFrame:
     """
     This function loads the data eu_life_expectancy
+    Args:
+        input_path: path to load dataset
     Returns:
         df: eu_life_expectancy as Pandas dataframe 
     """
