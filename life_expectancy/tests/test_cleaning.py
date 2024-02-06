@@ -38,6 +38,5 @@ def test_save_data(eu_life_expectancy_path, pt_life_expectancy_expected):
 def test_region_list(expected_countries_list):
     """Run get country region and compare the output with the expected"""
     result_countries_list = Region.get_country_regions()
-    assert (result_countries_list == expected_countries_list, 
-            "The expected countries list is not correct")
+    assert result_countries_list == expected_countries_list, "Countries list is incorrect"
 
