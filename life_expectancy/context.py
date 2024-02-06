@@ -4,18 +4,23 @@ from life_expectancy.strategy import Strategy
 from life_expectancy.region import Region
 
 class Context:
+    """
+    This class implements the context obj
+    that serves as interface between the strategies
+    and application
+    """
     def __init__(self) -> None:
         """Constructor class"""
         #private attribute
-        self.__strategy = Strategy()
-    
+        self.__strategy = Strategy
+
     def set_strategy(self, strategy: Strategy) -> None:
         """Set strategy
         Args:
             strategy: Strategy obj
         """
         self.__strategy = strategy
-    
+
     def get_strategy(self) -> Strategy:
         """
         Gets the current strategy defined
@@ -23,8 +28,11 @@ class Context:
             Strategy Obj
         """
         return self.__strategy
-    
-    def run_strategy(self, input_path: str =None, input_dataframe: pd.DataFrame =None, input_region: Region =None) -> Any:
+   
+    def run_strategy(self, 
+                     input_path: str = None, 
+                     input_dataframe: pd.DataFrame = None, 
+                     input_region: Region = None) -> Any:
         """
         Executes the defined strategy
         Args:

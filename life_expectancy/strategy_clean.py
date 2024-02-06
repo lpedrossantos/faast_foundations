@@ -3,7 +3,14 @@ from life_expectancy.region import Region
 from life_expectancy.strategy import Strategy
 
 class StrategyClean(Strategy):
-    def run(self, input_path: str = None, input_dataframe: pd.DataFrame = None, input_region: Region = None) -> pd.DataFrame:
+    """
+    This class inherits from abstract class strategy
+    and it implements the cleaning data strategy.
+    """
+    def run(self, 
+            input_path: str = None, 
+            input_dataframe: pd.DataFrame = None, 
+            input_region: Region = None) -> pd.DataFrame:
         """
         Performs the cleaning steps of dataframe
         Args:

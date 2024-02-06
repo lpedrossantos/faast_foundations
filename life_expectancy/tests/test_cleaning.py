@@ -63,6 +63,6 @@ def test_save_data(eu_life_expectancy_tsv_path, pt_life_expectancy_expected):
         save_strat.run(input_dataframe=result_df, input_path=OUTPUT_DIR / "pt_life_expectancy.csv")
         to_csv_mock.assert_called_once()
         pd.testing.assert_frame_equal(
-            pd.read_csv(OUTPUT_DIR / "pt_life_expectancy.csv"), 
+            pd.read_csv(OUTPUT_DIR / "pt_life_expectancy.csv"),
             pt_life_expectancy_expected
         )
