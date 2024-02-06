@@ -40,7 +40,7 @@ def main() -> None:
     #Save Data
     context.set_strategy(StrategySave())
     context.run_strategy(
-        input_dataframe=df_filtered, 
+        input_dataframe=df_filtered,
         input_path=f'./data/{args.region.lower()}_life_expectancy.csv'
     )
 

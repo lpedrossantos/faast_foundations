@@ -7,9 +7,9 @@ class StrategySave(Strategy):
     This class inherits from abstract class strategy
     and it implements the save data strategy.
     """
-    def run(self, 
-            input_path: str = None, 
-            input_dataframe: pd.DataFrame = None, 
+    def run(self,
+            input_path: str = None,
+            input_dataframe: pd.DataFrame = None,
             input_region: Region = None) -> pd.DataFrame:
         """
         This function saves the dataframe

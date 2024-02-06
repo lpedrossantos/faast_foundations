@@ -1,13 +1,13 @@
-import pandas as pd
 from abc import ABC, abstractmethod
+import pandas as pd
 from life_expectancy.region import Region
 
 class Strategy(ABC):
     """Abstract base class to implement each strategy"""
     @abstractmethod
-    def run(self, 
-            input_path: str= None, 
-            input_dataframe: pd.DataFrame = None, 
+    def run(self,
+            input_path: str= None,
+            input_dataframe: pd.DataFrame = None,
             input_region: Region = None):
         """
         Base function

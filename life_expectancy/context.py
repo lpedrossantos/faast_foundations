@@ -28,10 +28,10 @@ class Context:
             Strategy Obj
         """
         return self.__strategy
-   
+
     def run_strategy(self, 
-                     input_path: str = None, 
-                     input_dataframe: pd.DataFrame = None, 
+                     input_path: str = None,
+                     input_dataframe: pd.DataFrame = None,
                      input_region: Region = None) -> Any:
         """
         Executes the defined strategy

@@ -7,9 +7,9 @@ class StrategyFilter(Strategy):
     This class inherits from abstract class strategy
     and it implements the filter data strategy.
     """
-    def run(self, 
-            input_path: str = None, 
-            input_dataframe: pd.DataFrame = None, 
+    def run(self,
+            input_path: str = None,
+            input_dataframe: pd.DataFrame = None,
             input_region: Region = None) -> pd.DataFrame:
         """
         This function filters the dataframe by region

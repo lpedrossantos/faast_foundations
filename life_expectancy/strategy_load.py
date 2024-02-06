@@ -1,5 +1,5 @@
-import pandas as pd
 from pathlib import Path
+import pandas as pd
 from life_expectancy.strategy import Strategy
 from life_expectancy.region import Region
 
@@ -41,9 +41,9 @@ class StrategyLoad(Strategy):
         df = pd.read_csv(input_path, sep= r'\,|\t', header=0, engine='python')
         return df
 
-    def run(self, 
-            input_path: str = None, 
-            input_dataframe: pd.DataFrame = None, 
+    def run(self,
+            input_path: str = None,
+            input_dataframe: pd.DataFrame = None,
             input_region: Region = None) -> pd.DataFrame:
         """
         Performs the load of data
