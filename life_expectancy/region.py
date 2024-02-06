@@ -1,6 +1,10 @@
 from enum import Enum, auto
+from typing import List
 
 class Region(Enum):
+    """
+    This class defines Enum Regions
+    """
     AL = auto()
     AM = auto()
     AT = auto()
@@ -57,8 +61,15 @@ class Region(Enum):
     UA = auto()
     UK = auto()
     XK = auto()
+
     @classmethod
-    def get_country_regions(cls):
+    def get_country_regions(cls) -> List:
+        """
+        This function gets a list of countries excluding 
+        econimic regions or organizations
+        Returns:
+            A list EU countries
+        """
         not_country_regions = [
             'DE_TOT',
             'EA18',
@@ -73,5 +84,4 @@ class Region(Enum):
         ]
 
         all_country_regions = [member.name for member in cls if member.name not in not_country_regions]
-
         return all_country_regions
