@@ -32,11 +32,12 @@ def test_save_data(eu_life_expectancy_path, pt_life_expectancy_expected):
         df_cleaned = clean_data(df, Region.PT)
         save_data(df_cleaned, OUTPUT_DIR / "pt_life_expectancy.csv")
         to_csv_mock.assert_called_once()
-        pd.testing.assert_frame_equal(pd.read_csv(OUTPUT_DIR / "pt_life_expectancy.csv"), 
+        pd.testing.assert_frame_equal(pd.read_csv(OUTPUT_DIR / "pt_life_expectancy.csv"),
                                   pd.read_csv(FIXTURES_DIR / "pt_life_expectancy_expected.csv"))
-        
 
 def test_region_list(expected_countries_list):
+    """Run get country region and compare the output with the expected"""
     result_countries_list = Region.get_country_regions()
-    assert result_countries_list == expected_countries_list, "The expected countries list is not correct"
+    assert (result_countries_list == expected_countries_list, 
+            "The expected countries list is not correct")
 

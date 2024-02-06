@@ -1,5 +1,4 @@
 import pandas as pd
-from pathlib import Path
 
 def load_data(input_path: str) -> pd.DataFrame:
     """
