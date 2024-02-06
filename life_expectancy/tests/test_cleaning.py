@@ -25,6 +25,7 @@ def test_load_json(eu_life_expectancy_json_path):
     load_strat = StrategyLoad()
     result_df = load_strat.run(input_path=eu_life_expectancy_json_path)
     expected_df = pd.read_json(eu_life_expectancy_json_path)
+    expected_df = expected_df.rename(columns={'country' : 'region', 'life_expectancy': 'value'})
     pd.testing.assert_frame_equal(result_df, expected_df)
 
 def test_clean_data(eu_life_expectancy_tsv_path, eu_life_expectancy_expected):
@@ -59,6 +60,22 @@ def test_save_data(eu_life_expectancy_tsv_path, pt_life_expectancy_expected):
         df_cleaned = clean_strat.run(input_dataframe=df)
         filter_strat = StrategyFilter()
         result_df = filter_strat.run(input_dataframe=df_cleaned, input_region=Region.PT)
+        save_strat = StrategySave()
+        save_strat.run(input_dataframe=result_df, input_path=OUTPUT_DIR / "pt_life_expectancy.csv")
+        to_csv_mock.assert_called_once()
+        pd.testing.assert_frame_equal(
+            pd.read_csv(OUTPUT_DIR / "pt_life_expectancy.csv"),
+            pt_life_expectancy_expected
+        )
+
+def test_json_pipeline(eu_life_expectancy_json_path, pt_life_expectancy_expected):
+    """Run the all json pipeline and compare the output to the expected output"""
+    with mock.patch('pandas.DataFrame.to_csv') as to_csv_mock:
+        to_csv_mock.return_value = print("CSV Saved Successfully")
+        load_strat = StrategyLoad()
+        df = load_strat.run(input_path=eu_life_expectancy_json_path)
+        filter_strat = StrategyFilter()
+        result_df = filter_strat.run(input_dataframe=df, input_region=Region.PT)
         save_strat = StrategySave()
         save_strat.run(input_dataframe=result_df, input_path=OUTPUT_DIR / "pt_life_expectancy.csv")
         to_csv_mock.assert_called_once()

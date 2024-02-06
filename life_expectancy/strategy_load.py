@@ -17,6 +17,7 @@ class StrategyLoad(Strategy):
             df: loaded dataframe as pandas Dataframe
         """
         df = pd.read_json(input_path)
+        df = df.rename(columns={'country' : 'region', 'life_expectancy': 'value'})
         return df
 
     def _load_csv(self, input_path: str) -> pd.DataFrame:
