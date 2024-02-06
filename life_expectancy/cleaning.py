@@ -1,6 +1,10 @@
 import pandas as pd
 
-def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
+from life_expectancy.region import Region
+
+
+
+def clean_data(df: pd.DataFrame, region: Region = Region.PT) -> pd.DataFrame:
     """
     This function cleans the data from eu_life_expectancy_raw dataset.
     By default filters for the PT region but it can also be filter
@@ -25,6 +29,8 @@ def clean_data(df: pd.DataFrame, region: str ='PT') -> pd.DataFrame:
 
     df = df.dropna()
 
-    df_cleaned = df[df['region'] == region].reset_index(drop=True)
+    filter_region = region.name
+
+    df_cleaned = df[df['region'] == filter_region].reset_index(drop=True)
 
     return df_cleaned

@@ -1,5 +1,4 @@
 import pandas as pd
-from pathlib import Path
 
 def save_data(df_cleaned: pd.DataFrame, save_path: str) -> None:
     """
